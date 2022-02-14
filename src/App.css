@@ -1,21 +1,40 @@
+@font-face {
+	font-family: 'OrbitronBlack';
+	src: local('OrbitronBlack'), url(./fonts/Orbitron-Black.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Navbar-custom {
+	background-color: rgb(0, 0, 0);
+	height: 120px;
+	padding-top: 120px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Nav-item p{
+	font-size: 14px;
+	font-weight: 400;
+	color: white;
+	padding: 6px 15px;
+	border-radius: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Nav-item:hover p {
+	color: rgb(0, 0, 0);
+	background-color: white;
+	animation: Nav-item-hover 0.5s linear;
+}
+
+.Nav-item-active p {
+	color: rgb(0, 0, 0);
+	background-color: white;
+}
+
+.Jumbotron {
+  background-color: #000000;
+  height: 630px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +43,206 @@
   color: white;
 }
 
+#jumbotron-background {
+	width: 800px;
+	height: 800px;
+	background-image: url(./main_background.png);
+	background-attachment: fixed;
+	background-size: 80%;
+	background-position: center;
+	background-position-y: 120px;
+	background-repeat: no-repeat;
+	animation: Main-background-dissolve 5s linear;
+}
+
+.Jumbotron h2 {
+	position: absolute;
+  	top: 50%;
+  	left: 75%;
+  	transform: translate(-50%, -50%);
+	animation: Jumbotron-caption 3s linear;  
+}
+
+.Jumbotron span {
+	font-weight: 300;
+	font-size: 18px;
+	position: absolute;
+  	top: 85%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+.Arrow_for_more{
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.Arrow_for_more span{
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-bottom: 2px solid white;
+	border-right: 2px solid white;
+	transform: rotate(45deg);
+	margin: -10px;
+	animation: animate 2s infinite;
+}
+
+.Arrow_for_more span:nth-child(2)
+{
+	animation-delay: -0.2s;
+}
+
+.Arrow_for_more span:nth-child(3)
+{
+	animation-delay: -0.4s;
+}
+
+@keyframes animate{
+	
+	0%{
+		opacity: 0;
+		transform: rotate(45deg) translate(-20px, -20px);
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+		transform: rotate(45deg) translate(20px, 20px);
+	}
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes Main-background-dissolve {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes Nav-item-hover {
   from {
-    transform: rotate(0deg);
+	opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+	opacity: 1;
   }
 }
+
+@keyframes Jumbotron-caption {
+  0% {
+	opacity: 0;
+	left: 73%;
+  }
+  50% {
+	opacity: 0;
+	left: 73%;  
+  }
+  100% {
+	opacity: 1;
+	left: 75%;
+  }
+}
+
+/* About Me */
+.About-me {
+	height: 750px;
+	width: auto;
+	padding-top: 80px;
+}
+
+.About-me .About-me-title {
+	font-size: 70px;
+	margin-left: -800px;
+}
+
+.About-me .About-me-title2 {
+	font-size: 70px;
+	margin-left: -370px;
+}
+
+.About-me .About-me-content {
+	margin-left: 400px;
+	text-align: justify;
+	color: rgb(58, 58, 122);
+}
+
+.About-me-background {
+	margin-top: -250px;
+	width: 600px;
+	height: auto;
+	margin-left: 700px;
+}
+
+/* Expertise */
+.Expertise {
+	height: 1500px;
+	width: auto;
+	/* background-color: black; */
+}
+
+.Expertise-content {
+	margin-left: 60px;
+	margin-right: 60px;
+}
+
+.Expertise-title {
+	font-size: 80px;
+	padding-top: 150px;
+	text-align: left;
+	/* margin-left: 100px; */
+	font-family: "OrbitronBlack";
+}
+
+.Expertise-item {
+	margin-top: 150px;
+	position: absolute;
+	background-color: rgb(26, 26, 26);
+	width: 450px;
+	height: 450px;
+}
+
+/* .Expertise-item-1:hover ~ .Expertise {
+	background-color: rgb(182, 22, 22);
+	cursor: pointer;
+} */
+
+/* .Expertise-item-1:hover .Expertise,
+.Expertise-item-1:hover ~ .Expertise {
+    background-color: rgb(182, 22, 22);
+	cursor: pointer;
+} */
+
+/* .Expertise-item-2:hover {
+	background-color: rgb(182, 22, 22);
+	cursor: pointer;
+}
+
+.Expertise-item-3:hover {
+	background-color: rgb(182, 22, 22);
+	cursor: pointer;
+}
+
+#a {
+	width: 400px;
+	height: 400px;
+	background-color: blue;
+}
+
+#b {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+}
+
+#b:hover #a {
+    background: #ccc
+} */
