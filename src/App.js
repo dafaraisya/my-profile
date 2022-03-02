@@ -1,25 +1,20 @@
 import { useRef, useEffect } from 'react';
 import logoBrand from './logo_brand.svg';
 import mapKendal from './map_kendal.svg';
+import flutter_logo from './flutter_logo.png';
+import firebase_logo from './firebase_logo.png';
+import vuejs_logo from './vuejs_logo.png';
+import nodejs_logo from './nodejs_logo.png';
+import react_logo from './react_logo.png';
+import mongodb_logo from './mongodb_logo.png';
 import './App.css';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { gsap, Power3, Sine, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import $ from 'jquery'; 
+import { hasPointerEvents } from '@testing-library/user-event/dist/utils';
 gsap.registerPlugin(ScrollTrigger);
-
-// const ColoredLine = ({ color }) => (
-//     <hr
-//         style={{
-//             color: 'black !important',
-//             backgroundColor: 'black',
-//             height: 2
-//         }}
-//     />
-// );
-
-
 
 function App() {
 	let aboutMeTitle = useRef(null);
@@ -32,6 +27,9 @@ function App() {
 	let expertiseItem1 = useRef(null);
 	let expertiseItem2 = useRef(null);
 	let expertiseItem3 = useRef(null);
+	let expertiseItem4 = useRef(null);
+	let expertiseItem5 = useRef(null);
+	let expertiseItem6 = useRef(null);
 
 	useEffect(() => {
 		// about me
@@ -108,8 +106,12 @@ function App() {
 		// expertise
 		const colorToBlack = gsap.fromTo(
 			expertise, 
-			{ backgroundColor: "rgba(255, 255, 255, 0.0)"},
-			{ backgroundColor: "#000000", color: "white"}
+			{ 
+				backgroundColor: "rgba(255, 255, 255, 0.0)"
+			},
+			{ 	backgroundColor: "#000000", 
+				color: "white",
+			}
 		)
 		
 		ScrollTrigger.create({
@@ -119,39 +121,72 @@ function App() {
 			scrub: true,
 			animation: colorToBlack
 		});
+
+		const expertiseItem1 = document.getElementById("expertiseItem1");
+		const expertiseItem2 = document.getElementById("expertiseItem2");
+		const expertiseItem3 = document.getElementById("expertiseItem3");
+		const expertiseItem4 = document.getElementById("expertiseItem4");
+		const expertiseItem5 = document.getElementById("expertiseItem5");
+		const expertiseItem6 = document.getElementById("expertiseItem6");
+		const expertiseBackground = document.getElementById("expertise");
+
+		const hoverIn = (id, color) => gsap.to(id, {
+			scaleX:1.05, scaleY:1.05, scaleZ:1.05,
+			backgroundColor: color,
+			duration: 1.5,
+			paused: true,
+			ease: "ease-in-out"
+		});
+		const hoverLeave = (idElement) => gsap.to(idElement, {
+			scaleX:1.0, scaleY:1.0, scaleZ:1,
+			backgroundColor: 'rgb(26, 26, 26)',
+			duration: 1.5,
+			paused: true,
+			ease: "ease-in-out",
+		});
+
+		const changeBackgroundExpertise = (idElement, color) => gsap.to(
+			idElement, {
+				backgroundColor: color,
+			}
+		);
+
+		const resetChangeBackgroundExpertise = (idElement) => gsap.to(
+			idElement, {
+				backgroundColor: "#000000",
+			}
+		);
+
+		expertiseItem1.addEventListener("mouseenter", () => hoverIn(expertiseItem1, "rgb(40, 182, 246)").play());
+		expertiseItem1.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 182, 246)").play());
+		expertiseItem1.addEventListener("mouseleave", () => hoverLeave(expertiseItem1).play());
+		expertiseItem1.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		
+		expertiseItem2.addEventListener("mouseenter", () => hoverIn(expertiseItem2, "rgb(242, 192, 40)").play());
+		expertiseItem2.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(242, 192, 40)").play());
+		expertiseItem2.addEventListener("mouseleave", () => hoverLeave(expertiseItem2).play());
+		expertiseItem2.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		
+		expertiseItem3.addEventListener("mouseenter", () => hoverIn(expertiseItem3, "rgb(0, 116, 77)").play());
+		expertiseItem3.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 116, 77)").play());
+		expertiseItem3.addEventListener("mouseleave", () => hoverLeave(expertiseItem3).play());
+		expertiseItem3.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		
+		expertiseItem4.addEventListener("mouseenter", () => hoverIn(expertiseItem4, "rgb(79, 123, 25)").play());
+		expertiseItem4.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(79, 123, 25)").play());
+		expertiseItem4.addEventListener("mouseleave", () => hoverLeave(expertiseItem4).play());
+		expertiseItem4.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		
+		expertiseItem5.addEventListener("mouseenter", () => hoverIn(expertiseItem5, "rgb(0, 130, 153)").play());
+		expertiseItem5.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 130, 153)").play());
+		expertiseItem5.addEventListener("mouseleave", () => hoverLeave(expertiseItem5).play());
+		
+		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		expertiseItem6.addEventListener("mouseenter", () => hoverIn(expertiseItem6, "rgb(40, 95, 34)").play());
+		expertiseItem6.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 95, 34)").play());
+		expertiseItem6.addEventListener("mouseleave", () => hoverLeave(expertiseItem6).play());
+		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 	}, [])
-
-	// const elementExpertise = document.getElementById("expertise");
-	// const custom_style={
-	// 	backgroundColor : 'blue'
-	// }
-
-	// Object.assign(elementExpertise.style, custom_style);
-
-	function changeBackgroundItem1() {
-		document.getElementById("expertise").style.backgroundColor = 'blue';
-		document.getElementById("expertiseItem1").style.backgroundColor = 'rgb(43, 31, 94)';
-		document.getElementById("expertiseItem1").style.cursor = 'pointer';
-	}
-	
-	function changeBackgroundItem2() {
-		document.getElementById("expertise").style.backgroundColor = 'blue';
-		document.getElementById("expertiseItem2").style.backgroundColor = 'blue';
-		document.getElementById("expertiseItem2").style.cursor = 'pointer';
-	}
-	
-	function changeBackgroundItem3() {
-		document.getElementById("expertise").style.backgroundColor = 'blue';
-		document.getElementById("expertiseItem3").style.backgroundColor = 'blue';
-		document.getElementById("expertiseItem3").style.cursor = 'pointer';
-	}
-	
-	function resetChangeBackground() {
-		document.getElementById("expertise").style.backgroundColor = 'black';
-		document.getElementById("expertiseItem1").style.backgroundColor = 'rgb(26, 26, 26)';
-		document.getElementById("expertiseItem2").style.backgroundColor = 'rgb(26, 26, 26)';
-		document.getElementById("expertiseItem3").style.backgroundColor = 'rgb(26, 26, 26)';
-	}
 
 	return (
 		<div className="App">
@@ -171,12 +206,9 @@ function App() {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
-			{/* <ColoredLine color="white" />	 */}
 			<div className="Jumbotron">
-				{/* <span className="Jumbotron-background"></span> */}
-				{/* <img src={main_background} className="Jumbotron-background" alt="logo" /> */}
 				<div id="jumbotron-background"></div>
-				<h2>// I Do Some Code :)</h2>
+				<h2>// lorem ipsum lorem :)</h2>
 				<span>Scroll For More!</span>
 				<div class="Arrow_for_more">
 					<span></span>
@@ -197,13 +229,38 @@ function App() {
 					<div ref={el => { expertiseTitle = el }} className='Expertise-title'>STACK / FRAMEWORK<br></br>THAT I USED</div> 
 					<Row>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem1 = el }} className='Expertise-item Expertise-item-1' id='expertiseItem1' onMouseEnter={changeBackgroundItem1} onMouseLeave={resetChangeBackground}></div>
+							<a href='google.com'>
+								<div ref={el => { expertiseItem1 = el }} className='Expertise-item Expertise-item-1' id='expertiseItem1'>
+									<img className='Expertise-logo-1' width={150} src={flutter_logo}></img>
+								</div>
+							</a>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem2 = el }} className='Expertise-item Expertise-item-2' id='expertiseItem2' onMouseEnter={changeBackgroundItem2} onMouseLeave={resetChangeBackground}></div>
+							<div ref={el => { expertiseItem2 = el }} className='Expertise-item Expertise-item-2' id='expertiseItem2'>
+								<img className='Expertise-logo-2' width={240} src={firebase_logo}></img>
+							</div>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem3 = el }} className='Expertise-item Expertise-item-3' id='expertiseItem3' onMouseEnter={changeBackgroundItem3} onMouseLeave={resetChangeBackground}></div>
+							<div ref={el => { expertiseItem3 = el }} className='Expertise-item Expertise-item-3' id='expertiseItem3'>
+								<img className='Expertise-logo-3' width={180} src={vuejs_logo}></img>
+							</div>
+						</Col>
+					</Row>
+					<Row>
+						<Col xs={6} md={4}>
+							<div ref={el => { expertiseItem4 = el }} className='Expertise-item-new-row Expertise-item-4' id='expertiseItem4'>
+								<img className='Expertise-logo-4' width={280} src={nodejs_logo}></img>
+							</div>
+						</Col>
+						<Col xs={6} md={4}>
+							<div ref={el => { expertiseItem5 = el }} className='Expertise-item-new-row Expertise-item-5' id='expertiseItem5'>
+							<img className='Expertise-logo-5' width={240} src={react_logo}></img>
+							</div>
+						</Col>
+						<Col xs={6} md={4}>
+							<div ref={el => { expertiseItem6 = el }} className='Expertise-item-new-row Expertise-item-6' id='expertiseItem6'>
+							<img className='Expertise-logo-6' width={240} src={mongodb_logo}></img>
+							</div>
 						</Col>
 					</Row>
 				</div>

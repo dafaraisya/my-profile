@@ -184,9 +184,8 @@
 
 /* Expertise */
 .Expertise {
-	height: 1500px;
+	height: 1800px;
 	width: auto;
-	/* background-color: black; */
 }
 
 .Expertise-content {
@@ -198,7 +197,6 @@
 	font-size: 80px;
 	padding-top: 150px;
 	text-align: left;
-	/* margin-left: 100px; */
 	font-family: "OrbitronBlack";
 }
 
@@ -208,41 +206,18 @@
 	background-color: rgb(26, 26, 26);
 	width: 450px;
 	height: 450px;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
 }
 
-/* .Expertise-item-1:hover ~ .Expertise {
-	background-color: rgb(182, 22, 22);
-	cursor: pointer;
-} */
-
-/* .Expertise-item-1:hover .Expertise,
-.Expertise-item-1:hover ~ .Expertise {
-    background-color: rgb(182, 22, 22);
-	cursor: pointer;
-} */
-
-/* .Expertise-item-2:hover {
-	background-color: rgb(182, 22, 22);
-	cursor: pointer;
+.Expertise-item-new-row {
+	margin-top: 620px;
+	position: absolute;
+	background-color: rgb(26, 26, 26);
+	width: 450px;
+	height: 450px;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
 }
-
-.Expertise-item-3:hover {
-	background-color: rgb(182, 22, 22);
-	cursor: pointer;
-}
-
-#a {
-	width: 400px;
-	height: 400px;
-	background-color: blue;
-}
-
-#b {
-	width: 200px;
-	height: 200px;
-	background-color: blue;
-}
-
-#b:hover #a {
-    background: #ccc
-} */
