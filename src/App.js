@@ -8,12 +8,10 @@ import nodejs_logo from './nodejs_logo.png';
 import react_logo from './react_logo.png';
 import mongodb_logo from './mongodb_logo.png';
 import './App.css';
-import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col, Carousel, CarouselItem } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { gsap, Power3, Sine, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import $ from 'jquery'; 
-import { hasPointerEvents } from '@testing-library/user-event/dist/utils';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
@@ -86,22 +84,6 @@ function App() {
 				},
 			},
 		);
-
-		gsap.set(".page", {autoAlpha: 1, xPercent:-100})
-
-		var $page = $('.page'),
-			$button = $('.button');
-
-		$button.on('mouseenter', function(e) {
-			var $thisPage = $(this).attr('id');
-			console.log($thisPage);
-
-			gsap.to($thisPage, 0.8, {xPercent:0, ease: Sine.easeInOut});
-		});
-
-		$button.on('mouseleave', function(e) {
-			gsap.to($page, 0.4, {xPercent:-100, ease: Power2.easeIn});
-		});
 
 		// expertise
 		const colorToBlack = gsap.fromTo(
@@ -180,16 +162,20 @@ function App() {
 		expertiseItem5.addEventListener("mouseenter", () => hoverIn(expertiseItem5, "rgb(0, 130, 153)").play());
 		expertiseItem5.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 130, 153)").play());
 		expertiseItem5.addEventListener("mouseleave", () => hoverLeave(expertiseItem5).play());
-		
+		expertiseItem5.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+
 		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		expertiseItem6.addEventListener("mouseenter", () => hoverIn(expertiseItem6, "rgb(40, 95, 34)").play());
 		expertiseItem6.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 95, 34)").play());
 		expertiseItem6.addEventListener("mouseleave", () => hoverLeave(expertiseItem6).play());
 		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+
+		// my portfolio
 	}, [])
 
 	return (
 		<div className="App">
+			{/* navbar */}
 			<Navbar expand="lg" className='Navbar-custom'>
 				<Container>
 					<Navbar.Brand href="#home" className='Nav-item-logo'>
@@ -206,6 +192,8 @@ function App() {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+
+			{/* jumbotron */}
 			<div className="Jumbotron">
 				<div id="jumbotron-background"></div>
 				<h2>// lorem ipsum lorem :)</h2>
@@ -216,6 +204,8 @@ function App() {
 					<span></span>
 				</div>
 			</div>
+
+			{/* about me */}
 			<div className="About-me">
 				<span ref={el => { aboutMeTitle = el }} className="About-me-title">About Me</span><br></br>
 				<span ref={el => { aboutMeTitle2 = el }} className="About-me-title2">Hi! I'm Dafa</span><br></br>
@@ -224,62 +214,110 @@ function App() {
 				<br></br>Here's some of my works.</p>
 				<img src={mapKendal} ref={el => { aboutMeBackground = el }} className="About-me-background" alt="logo" />
 			</div>
+
+			{/* expertise */}
 			<div ref={el => { expertise = el }} className="Expertise" id='expertise'>
 				<div className='Expertise-content'>
 					<div ref={el => { expertiseTitle = el }} className='Expertise-title'>STACK / FRAMEWORK<br></br>THAT I USED</div> 
 					<Row>
 						<Col xs={6} md={4}>
-							<a href='google.com'>
+							<a href='https://flutter.dev/'>
 								<div ref={el => { expertiseItem1 = el }} className='Expertise-item Expertise-item-1' id='expertiseItem1'>
 									<img className='Expertise-logo-1' width={150} src={flutter_logo}></img>
 								</div>
 							</a>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem2 = el }} className='Expertise-item Expertise-item-2' id='expertiseItem2'>
-								<img className='Expertise-logo-2' width={240} src={firebase_logo}></img>
-							</div>
+							<a href="https://firebase.google.com/">
+								<div ref={el => { expertiseItem2 = el }} className='Expertise-item Expertise-item-2' id='expertiseItem2'>
+									<img className='Expertise-logo-2' width={240} src={firebase_logo}></img>
+								</div>
+							</a>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem3 = el }} className='Expertise-item Expertise-item-3' id='expertiseItem3'>
-								<img className='Expertise-logo-3' width={180} src={vuejs_logo}></img>
-							</div>
+							<a href="https://vuejs.org/">
+								<div ref={el => { expertiseItem3 = el }} className='Expertise-item Expertise-item-3' id='expertiseItem3'>
+									<img className='Expertise-logo-3' width={180} src={vuejs_logo}></img>
+								</div>
+							</a>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem4 = el }} className='Expertise-item-new-row Expertise-item-4' id='expertiseItem4'>
-								<img className='Expertise-logo-4' width={280} src={nodejs_logo}></img>
-							</div>
+							<a href="https://nodejs.org/en/">
+								<div ref={el => { expertiseItem4 = el }} className='Expertise-item-new-row Expertise-item-4' id='expertiseItem4'>
+									<img className='Expertise-logo-4' width={280} src={nodejs_logo}></img>
+								</div>
+							</a>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem5 = el }} className='Expertise-item-new-row Expertise-item-5' id='expertiseItem5'>
-							<img className='Expertise-logo-5' width={240} src={react_logo}></img>
-							</div>
+							<a href="https://reactjs.org/">
+								<div ref={el => { expertiseItem5 = el }} className='Expertise-item-new-row Expertise-item-5' id='expertiseItem5'>
+									<img className='Expertise-logo-5' width={240} src={react_logo}></img>
+								</div>
+							</a>
 						</Col>
 						<Col xs={6} md={4}>
-							<div ref={el => { expertiseItem6 = el }} className='Expertise-item-new-row Expertise-item-6' id='expertiseItem6'>
-							<img className='Expertise-logo-6' width={240} src={mongodb_logo}></img>
-							</div>
+							<a href="https://www.mongodb.com/">
+								<div ref={el => { expertiseItem6 = el }} className='Expertise-item-new-row Expertise-item-6' id='expertiseItem6'>
+									<img className='Expertise-logo-6' width={240} src={mongodb_logo}></img>
+								</div>
+							</a>
 						</Col>
 					</Row>
 				</div>
 			</div>
-			<li id="#Coffee" class="button">Coffee</li>
-			<li id="#Raspberries" class="button">Raspberries</li>
-			<li id="#Strawberries" class="button">Strawberries</li> 
-			
-			<div id="Book">
-				<div id="Coffee" class="page">
-				<img src="https://unsplash.it/300/450?image=766" alt="xxxxx"/>
+
+			{/* my project */}
+			<div className='Expertise-to-my-project'></div>
+			<div className='My-project'>
+				<div className='My-project-title'>
+					<span>My Project</span>
+					<span>Pemira HIMATIPA UGM FMIPA UNS</span>
 				</div>
-				<div id="Raspberries" class="page" >
-					<img src="https://unsplash.it/300/450?image=889" alt="xxxxx"/>
-				</div>
-				<div id="Strawberries" class="page" >
-					<img src="https://unsplash.it/300/450?image=1080" alt="xxxxx"/>
+				<hr />
+				<div className='My-project-control'>
+					<span><i class="bi bi-arrow-left-circle"></i></span>
+					<span><i class="bi bi-arrow-right-circle"></i></span>
 				</div>
 			</div>
+
+			{/* carousel */}
+			<Carousel>
+				<Carousel.Item interval={1000}>
+					<img
+					className="d-block w-100"
+					src="holder.js/800x400?text=First slide&bg=373940"
+					alt="First slide"
+					/>
+					<Carousel.Caption>
+					<h3>First slide label</h3>
+					<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item interval={500}>
+					<img
+					className="d-block w-100"
+					src="holder.js/800x400?text=Second slide&bg=282c34"
+					alt="Second slide"
+					/>
+					<Carousel.Caption>
+					<h3>Second slide label</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+					<img
+					className="d-block w-100"
+					src="holder.js/800x400?text=Third slide&bg=20232a"
+					alt="Third slide"
+					/>
+					<Carousel.Caption>
+					<h3>Third slide label</h3>
+					<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+			</Carousel>
 		</div>
 	);
 }
