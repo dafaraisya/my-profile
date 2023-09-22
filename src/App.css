@@ -8,9 +8,8 @@
 }
 
 .Navbar-custom {
-	background-color: rgb(0, 0, 0);
+	background-color: black;
 	height: 120px;
-	padding-top: 120px;
 }
 
 .Nav-item p{
@@ -44,22 +43,22 @@
 }
 
 #jumbotron-background {
-	width: 800px;
-	height: 800px;
+	width: 100%;
+	height: 100%;
 	background-image: url(./main_background.png);
 	background-attachment: fixed;
 	background-size: 80%;
 	background-position: center;
-	background-position-y: 120px;
+	background-position-y: 150px;
 	background-repeat: no-repeat;
 	animation: Main-background-dissolve 5s linear;
 }
 
 .Jumbotron h2 {
 	position: absolute;
-  	top: 50%;
-  	left: 75%;
-  	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 70%;
+	transform: translate(-50%, -50%);
 	animation: Jumbotron-caption 3s linear;  
 }
 
@@ -67,9 +66,9 @@
 	font-weight: 300;
 	font-size: 18px;
 	position: absolute;
-  	top: 85%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .Arrow_for_more{
@@ -139,16 +138,31 @@
 
 @keyframes Jumbotron-caption {
   0% {
-	opacity: 0;
-	left: 73%;
+		opacity: 0;
+		left: 73%;
   }
   50% {
-	opacity: 0;
-	left: 73%;  
+		opacity: 0;
+		left: 73%;  
   }
   100% {
-	opacity: 1;
-	left: 75%;
+		opacity: 1;
+		left: 70%;
+  }
+}
+
+@keyframes Jumbotron-caption-mobile {
+  0% {
+		opacity: 0;
+		left: 40%;
+  }
+  50% {
+		opacity: 0;
+		left: 40%;  
+  }
+  100% {
+		opacity: 1;
+		left: 50%;
   }
 }
 
@@ -166,25 +180,29 @@
 
 .About-me .About-me-title2 {
 	font-size: 70px;
-	margin-left: -370px;
+	margin-left: -580px;
 }
 
 .About-me .About-me-content {
-	margin-left: 400px;
+	margin-left: 180px;
 	text-align: justify;
 	color: rgb(58, 58, 122);
 }
 
+.About-me-content {
+	width: 550px;
+}
+
 .About-me-background {
-	margin-top: -250px;
+	margin-top: -260px;
 	width: 600px;
 	height: auto;
-	margin-left: 700px;
+	margin-left: 580px;
 }
 
 /* Expertise */
 .Expertise {
-	height: 1800px;
+	height: 1400px;
 	width: auto;
 }
 
@@ -194,7 +212,7 @@
 }
 
 .Expertise-title {
-	font-size: 80px;
+	font-size: 60px;
 	padding-top: 150px;
 	text-align: left;
 	font-family: "OrbitronBlack";
@@ -204,50 +222,234 @@
 	margin-top: 150px;
 	position: absolute;
 	background-color: rgb(26, 26, 26);
-	width: 450px;
-	height: 450px;
+	width: 30%;
+	height: 55%;
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .Expertise-item-new-row {
 	margin-top: 620px;
 	position: absolute;
 	background-color: rgb(26, 26, 26);
-	width: 450px;
-	height: 450px;
+	width: 30%;
+	height: 55%;
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (min-width: 1000px) {
+	.Expertise-item-mobile {
+		display: none;
+	}
+
+	.About-me-mobile {
+		display: none;
+	}
 }
 
 /* My Project */
 .Expertise-to-my-project {
-	height: 300px;
-	background-image: linear-gradient(to bottom, black, rgb(6,28,61));
+	height: 320px;
+	background-image: linear-gradient(to bottom, black, rgb(255, 255, 255));
 }
 
 .My-project {
-	height: 1200px;
-	background-color: rgb(8,28,61);
+	height: 120px;
+	background-color: rgb(255, 255, 255);
 	padding-left: 60px;
 	padding-right: 60px;
 }
+
 .My-project-title {
-	color: white;
-	font-size: 24px;
+	margin-left: 100px;
+	font-size: 50px;
+	font-style: italic;
 	display: flex;
 	justify-content: space-between;
-	font-weight: 100;
+	font-weight: 600;
 }
 
 .My-project hr {
-	border-top: 2px solid rgb(255, 255, 255);
+	border-top: 2px solid rgb(0, 0, 0);
 }
 
 .My-project-control {
 	color: white;
 	display: flex;
 	justify-content: space-between;
+}
+
+.carousel {
+	margin-bottom: 100px;
+}
+
+.carousel-img {
+	margin-left: 160px; 
+	margin-right: 160px; 
+	margin-top: 20px;
+	width: 75%;
+}
+
+.carousel-control-prev-icon {
+	background-color: #000000;
+  padding: 10px;
+}
+
+.carousel-control-next-icon {
+	background-color: #000000;
+  padding: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+	/* navbar */
+	.Navbar-custom {
+		height: 100px;
+		width: 100%;
+	}
+
+	/* jumbotron */
+	#jumbotron-background {
+		width: 100%;
+		background-size: 100%;
+		background-position-y: 220px;
+	}
+	
+	.Jumbotron h2 {
+		position: absolute;
+		top: 62%;
+		left: 50%;
+		font-size: 18px;
+		animation: Jumbotron-caption-mobile 3s linear;  
+	}
+
+	/* aboout me */
+	.About-me {
+		display: none;
+	}
+
+	.About-me-mobile {
+		margin-top: 40px;
+	}
+
+	.About-me-title-mobile, .About-me-title2-mobile{
+		font-size: 30px;
+	}
+
+	.About-me-content-mobile {
+		font-size: 16px;
+		padding: 10px 40px 40px 40px;
+	}
+
+	/* my expertise */
+	.Expertise {
+		height: 750px;
+		width: auto;
+	}
+
+	.Expertise-content {
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	
+	.Expertise-title {
+		font-size: 40px;
+		padding-top: 60px;
+		text-align: left;
+		font-family: "OrbitronBlack";
+	}
+	
+	.Expertise-item, .Expertise-item-new-row {
+		display: none;
+	}
+
+	.Expertise-item-mobile h4 {
+		font-size: 30px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: white;
+		border-radius: 20px;
+		padding: 15px;
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	/* My Project */
+	.Expertise-to-my-project {
+		height: 90px;
+		background-image: linear-gradient(to bottom, black, rgb(255, 255, 255));
+	}
+	
+	.My-project {
+		height: 100px;
+		background-color: rgb(255, 255, 255);
+		padding-left: 40px;
+	}
+	
+	.My-project-title {
+		margin-left: 0px;
+		font-size: 40px;
+		font-style: italic;
+		display: flex;
+		justify-content: space-between;
+		font-weight: 600;
+	}
+	
+	.My-project hr {
+		display: none;
+	}
+	
+	.My-project-control {
+		color: white;
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.carousel {
+		margin-bottom: 20px;
+	}
+	
+	.carousel-img {
+		margin-left: 0px; 
+		margin-right: 0px; 
+		margin-top: 60px;
+		width: 75%;
+		margin-bottom: 50px;
+	}
+	
+	.carousel-control-prev-icon {
+		background-color: #000000;
+		padding: 10px;
+	}
+	
+	.carousel-control-next-icon {
+		background-color: #000000;
+		padding: 10px;
+	}
+
+}
+
+/* footer */
+.footer {
+	margin-top: 80px;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+.footer a {
+	color: rgb(26, 26, 26);
+	margin-left: 10px;
+	text-decoration: none;
+}
+
+.footer-contact {
+	margin-left: 10px;
+	font-size: 20px;
+	font-weight: 600;
+	font-style: italic;
 }

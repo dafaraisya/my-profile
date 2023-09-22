@@ -8,7 +8,7 @@ import nodejs_logo from './nodejs_logo.png';
 import react_logo from './react_logo.png';
 import mongodb_logo from './mongodb_logo.png';
 import './App.css';
-import { Navbar, Nav, Container, Row, Col, Carousel, CarouselItem } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col, Carousel, CarouselItem, Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { gsap, Power3, Sine, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -140,37 +140,86 @@ function App() {
 		);
 
 		expertiseItem1.addEventListener("mouseenter", () => hoverIn(expertiseItem1, "rgb(40, 182, 246)").play());
-		expertiseItem1.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 182, 246)").play());
+		// expertiseItem1.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 182, 246)").play());
 		expertiseItem1.addEventListener("mouseleave", () => hoverLeave(expertiseItem1).play());
-		expertiseItem1.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem1.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		
 		expertiseItem2.addEventListener("mouseenter", () => hoverIn(expertiseItem2, "rgb(242, 192, 40)").play());
-		expertiseItem2.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(242, 192, 40)").play());
+		// expertiseItem2.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(242, 192, 40)").play());
 		expertiseItem2.addEventListener("mouseleave", () => hoverLeave(expertiseItem2).play());
-		expertiseItem2.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem2.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		
 		expertiseItem3.addEventListener("mouseenter", () => hoverIn(expertiseItem3, "rgb(0, 116, 77)").play());
-		expertiseItem3.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 116, 77)").play());
+		// expertiseItem3.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 116, 77)").play());
 		expertiseItem3.addEventListener("mouseleave", () => hoverLeave(expertiseItem3).play());
-		expertiseItem3.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem3.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		
 		expertiseItem4.addEventListener("mouseenter", () => hoverIn(expertiseItem4, "rgb(79, 123, 25)").play());
-		expertiseItem4.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(79, 123, 25)").play());
+		// expertiseItem4.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(79, 123, 25)").play());
 		expertiseItem4.addEventListener("mouseleave", () => hoverLeave(expertiseItem4).play());
-		expertiseItem4.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem4.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		
 		expertiseItem5.addEventListener("mouseenter", () => hoverIn(expertiseItem5, "rgb(0, 130, 153)").play());
-		expertiseItem5.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 130, 153)").play());
+		// expertiseItem5.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(0, 130, 153)").play());
 		expertiseItem5.addEventListener("mouseleave", () => hoverLeave(expertiseItem5).play());
-		expertiseItem5.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem5.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 
-		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 		expertiseItem6.addEventListener("mouseenter", () => hoverIn(expertiseItem6, "rgb(40, 95, 34)").play());
-		expertiseItem6.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 95, 34)").play());
+		// expertiseItem6.addEventListener("mouseenter", () => changeBackgroundExpertise(expertiseBackground, "rgb(40, 95, 34)").play());
 		expertiseItem6.addEventListener("mouseleave", () => hoverLeave(expertiseItem6).play());
-		expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
+		// expertiseItem6.addEventListener("mouseleave", () => resetChangeBackgroundExpertise(expertiseBackground).play());
 
-		// my portfolio
+		// handle responsive desgin
+		let mm = gsap.matchMedia();
+
+		mm.add("(max-width: 800px)", () => {
+			ScrollTrigger.create({
+				trigger: expertiseTitle,
+				start: "top-=40px",
+				end: "+=40px",
+				scrub: true,
+				animation: colorToBlack
+			});
+			
+			gsap.from(
+				aboutMeTitle,
+				{
+					fontSize: '14px', 
+				},
+			);
+			gsap.from(
+				aboutMeTitle2,
+				{
+					fontSize: '24px', 
+				},
+			);
+			gsap.from(
+				aboutMeContent,
+				{
+					opacity: 1,
+					ease: Power3.easeOut, 
+					scrollTrigger: {
+						trigger: aboutMeContent,
+						toggleActions: "restart complete reverse reset",
+						scrub: true,
+					},
+				},
+			);
+			gsap.from(
+				aboutMeBackground,
+				{
+					y: 10,
+					opacity: 0,
+					ease: Power3.easeOut, 
+					scrollTrigger: {
+						trigger: aboutMeBackground,
+						toggleActions: "restart complete reverse reset",
+						scrub: true,
+					},
+				},
+			);
+		});
 	}, [])
 
 	return (
@@ -185,9 +234,9 @@ function App() {
 					<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 						<Nav>
 							<Nav.Link href="#home" className='Nav-item Nav-item-active'><p>Home</p></Nav.Link>
-							<Nav.Link href="#home" className='Nav-item' ><p>About Me</p></Nav.Link>
-							<Nav.Link href="#home" className='Nav-item' ><p>My Projects</p></Nav.Link>
-							<Nav.Link href="#home" className='Nav-item' ><p>Contact</p></Nav.Link>
+							<Nav.Link href="#about-me" className='Nav-item' ><p>About Me</p></Nav.Link>
+							<Nav.Link href="#my-projects" className='Nav-item' ><p>My Projects</p></Nav.Link>
+							<Nav.Link href="#contact" className='Nav-item' ><p>Contact</p></Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
@@ -196,9 +245,9 @@ function App() {
 			{/* jumbotron */}
 			<div className="Jumbotron">
 				<div id="jumbotron-background"></div>
-				<h2>// lorem ipsum lorem :)</h2>
+				<h2>// Hi, I'm Dafa Raisya :)</h2>
 				<span>Scroll For More!</span>
-				<div class="Arrow_for_more">
+				<div className="Arrow_for_more">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -206,19 +255,35 @@ function App() {
 			</div>
 
 			{/* about me */}
-			<div className="About-me">
+			<div className="About-me" id='about-me'>
 				<span ref={el => { aboutMeTitle = el }} className="About-me-title">About Me</span><br></br>
 				<span ref={el => { aboutMeTitle2 = el }} className="About-me-title2">Hi! I'm Dafa</span><br></br>
-				<p ref={el => { aboutMeContent = el }} className="About-me-content">A developer from Kendal, a small city in Indonesia.<br></br> 
+				{/* <p ref={el => { aboutMeContent = el }} className="About-me-content">A developer from Kendal, a small city in Indonesia.<br></br> 
 				currently i'm being student in Sepuluh Nopember Institute of Technology. <br></br> I have a lot of interest in web development and Mobile Development. 
-				<br></br>Here's some of my works.</p>
+				<br></br>Here's some of my works.</p> */}
+				<p ref={el => { aboutMeContent = el }} className="About-me-content">I grew up in a small town in Indonesia called Kendal. But i graduate of the Computer Engineering department from Sepuluh Nopember Institute of Technology in Surabaya. I have an interest in software development, especially in the fields of Web and Mobile Programming. I have gained experience in working on projects using various technologies in software development such as React.js, Vue.js, Express.js, Flutter, SQL, MongoDB, and Google Firebase. Currently, I am eager to constantly gain new experiences and develop skills in the field of software development.</p>
+				{/* <p ref={el => { aboutMeContent = el }} className="About-me-content">I grew up in a small town in Indonesia called Kendal. But i graduate of the <br /> Computer Engineering department from Sepuluh Nopember Institute of <br /> Technology in Surabaya. I have an interest in software development, <br /> especially in the fields of Web and Mobile Programming. I have gained <br /> experience in working on projects using various technologies in software <br /> development such as React.js, Vue.js, Express.js, Flutter, SQL, MongoDB, <br /> and Google Firebase. Currently, I am eager to constantly gain new <br /> experiences and develop skills in the field of software development.</p> */}
 				<img src={mapKendal} ref={el => { aboutMeBackground = el }} className="About-me-background" alt="logo" />
+			</div>
+			
+			<div className="About-me-mobile" id='about-me'>
+				<span className="About-me-title-mobile">About Me</span><br></br>
+				<span className="About-me-title2-mobile">Hi! I'm Dafa</span><br></br>
+				<p className="About-me-content-mobile">I grew up in a small town in Indonesia called Kendal. But i graduate of the Computer Engineering department from Sepuluh Nopember Institute of Technology in Surabaya. I have an interest in software development, especially in the fields of Web and Mobile Programming. I have gained experience in working on projects using various technologies in software development such as React.js, Vue.js, Express.js, Flutter, SQL, MongoDB, and Google Firebase. Currently, I am eager to constantly gain new experiences and develop skills in the field of software development.</p>
 			</div>
 
 			{/* expertise */}
 			<div ref={el => { expertise = el }} className="Expertise" id='expertise'>
 				<div className='Expertise-content'>
-					<div ref={el => { expertiseTitle = el }} className='Expertise-title'>STACK / FRAMEWORK<br></br>THAT I USED</div> 
+					<div ref={el => { expertiseTitle = el }} className='Expertise-title'>MY SKILLS</div> 
+					<div className='Expertise-item-mobile'>
+						<h4>Flutter</h4>
+						<h4>Firebase</h4>
+						<h4>Vue.js</h4>
+						<h4>Node.js</h4>
+						<h4>React.js</h4>
+						<h4>MongoDB</h4>
+					</div>
 					<Row>
 						<Col xs={6} md={4}>
 							<a href='https://flutter.dev/'>
@@ -269,55 +334,84 @@ function App() {
 			</div>
 
 			{/* my project */}
-			<div className='Expertise-to-my-project'></div>
+			<div className='Expertise-to-my-project' id='my-project'></div>
 			<div className='My-project'>
 				<div className='My-project-title'>
-					<span>My Project</span>
-					<span>Pemira HIMATIPA UGM FMIPA UNS</span>
+					<span>Here's some of my work</span>
 				</div>
 				<hr />
-				<div className='My-project-control'>
-					<span><i class="bi bi-arrow-left-circle"></i></span>
-					<span><i class="bi bi-arrow-right-circle"></i></span>
-				</div>
 			</div>
 
 			{/* carousel */}
-			<Carousel>
-				<Carousel.Item interval={1000}>
+			<Carousel className='carousel' prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" />} nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" />}>
+				<Carousel.Item interval={5000}>
 					<img
-					className="d-block w-100"
-					src="holder.js/800x400?text=First slide&bg=373940"
-					alt="First slide"
+						className="carousel-img"
+						src="assets/garuda-21.png"
+						alt="First slide"
 					/>
-					<Carousel.Caption>
-					<h3>First slide label</h3>
-					<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-					</Carousel.Caption>
 				</Carousel.Item>
-				<Carousel.Item interval={500}>
+				<Carousel.Item interval={1000} class="carousel-item">
 					<img
-					className="d-block w-100"
-					src="holder.js/800x400?text=Second slide&bg=282c34"
-					alt="Second slide"
+						className="carousel-img"
+						src="assets/rongsokin.png"
+						alt="Second slide"
 					/>
-					<Carousel.Caption>
-					<h3>Second slide label</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</Carousel.Caption>
 				</Carousel.Item>
-				<Carousel.Item>
-					<img
-					className="d-block w-100"
-					src="holder.js/800x400?text=Third slide&bg=20232a"
-					alt="Third slide"
+				<Carousel.Item interval={1000} class="carousel-item">
+					<img 
+						className="carousel-img"
+						src="assets/mage-7.png"
+						alt="Third slide"
 					/>
-					<Carousel.Caption>
-					<h3>Third slide label</h3>
-					<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-					</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item interval={1000} class="carousel-item">
+					<img 
+						className="carousel-img"
+						src="assets/nulungi.png"
+						alt="Fourth slide"
+					/>
+				</Carousel.Item>
+				<Carousel.Item interval={1000} class="carousel-item">
+					<img 
+						className="carousel-img"
+						src="assets/pemira.png"
+						alt="Fifth slide"
+					/>
 				</Carousel.Item>
 			</Carousel>
+
+			<hr />
+
+			{/* footer */}
+			<div className='footer' id='contact'>
+				<Card className="text-center">
+					<Card.Header>Contact Me</Card.Header>
+					<Card.Body>
+						<div className='mb-3'>
+							<i class="bi-envelope"></i>
+							<span className='footer-contact'>Email</span>
+							<a>dafaraisya.dr@gmail.com</a>
+						</div>
+						<div className='mb-3'>
+							<i class="bi-github"></i>
+							<span className='footer-contact'>Github</span>
+							<a href="https://github.com/dafaraisya">
+								github.com/dafaraisya
+							</a>
+						</div>
+						<div className='mb-3'>
+							<i class="bi-linkedin"></i>
+							<span className='footer-contact'>LinkedIn</span>
+							<a href="https://www.linkedin.com/in/dafaraisya">
+								linkedin.com/dafaraisya
+							</a>
+						</div>
+					</Card.Body>
+					<Card.Footer className="text-muted"><p>Copyright &copy; 2023, All Right Reserved Dafa Raisya</p></Card.Footer>
+				</Card>
+			</div>			
+
 		</div>
 	);
 }
